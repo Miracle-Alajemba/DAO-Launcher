@@ -16,15 +16,16 @@ mod builders_dao {
         next_proposal_id: u32,
     }
 
-    #[derive(Clone, Debug, PartialEq, Eq, scale::Decode, scale::Encode)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[cfg_attr(feature = "std", derive(ink::storage::traits::StorageLayout))]
+    #[derive(Clone, Debug, PartialEq, Eq)]
     pub enum ProposalStatus {
         Active,
         Executed,
     }
 
-    #[derive(Clone, Debug, PartialEq, Eq, scale::Decode, scale::Encode)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Clone, Debug, PartialEq, Eq)]
     pub enum Error {
         NotMember,
         ProposalNotFound,
@@ -37,8 +38,9 @@ mod builders_dao {
         EmptyTitle,
     }
 
-    #[derive(Clone, Debug, PartialEq, Eq, scale::Decode, scale::Encode)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[cfg_attr(feature = "std", derive(ink::storage::traits::StorageLayout))]
+    #[derive(Clone, Debug, PartialEq, Eq)]
     pub struct Proposal {
         id: u32,
         title: String,
@@ -50,8 +52,8 @@ mod builders_dao {
         voters: Vec<AccountId>,
     }
 
-    #[derive(Clone, Debug, PartialEq, Eq, scale::Decode, scale::Encode)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Clone, Debug, PartialEq, Eq)]
     pub struct DAOState {
         pub name: String,
         pub members_count: u32,
@@ -60,8 +62,8 @@ mod builders_dao {
         pub next_proposal_id: u32,
     }
 
-    #[derive(Clone, Debug, PartialEq, Eq, scale::Decode, scale::Encode)]
-    #[cfg_attr(feature = "std", derive(scale_info::TypeInfo))]
+    #[ink::scale_derive(Encode, Decode, TypeInfo)]
+    #[derive(Clone, Debug, PartialEq, Eq)]
     pub struct ProposalView {
         pub id: u32,
         pub title: String,
@@ -510,7 +512,7 @@ mod builders_dao {
             let accts = accounts();
             test::set_account_balance::<ink::env::DefaultEnvironment>(
                 test::callee::<ink::env::DefaultEnvironment>(),
-                2000,
+                2_000_000,
             );
             let before = test::get_account_balance::<ink::env::DefaultEnvironment>(accts.django)
                 .expect("should read");
@@ -535,7 +537,7 @@ mod builders_dao {
             let accts = accounts();
             test::set_account_balance::<ink::env::DefaultEnvironment>(
                 test::callee::<ink::env::DefaultEnvironment>(),
-                2000,
+                2_000_000,
             );
             test::set_caller::<ink::env::DefaultEnvironment>(accts.alice);
             let id = contract
@@ -554,7 +556,7 @@ mod builders_dao {
             let accts = accounts();
             test::set_account_balance::<ink::env::DefaultEnvironment>(
                 test::callee::<ink::env::DefaultEnvironment>(),
-                2000,
+                2_000_000,
             );
             test::set_caller::<ink::env::DefaultEnvironment>(accts.alice);
             let id = contract
@@ -574,7 +576,7 @@ mod builders_dao {
             let accts = accounts();
             test::set_account_balance::<ink::env::DefaultEnvironment>(
                 test::callee::<ink::env::DefaultEnvironment>(),
-                2000,
+                2_000_000,
             );
             test::set_caller::<ink::env::DefaultEnvironment>(accts.alice);
             let id = contract

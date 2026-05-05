@@ -1,0 +1,8 @@
+/home/miracle-alajemba/Documents/BuildersDAO/contracts/ink/target/debug/deps/scale_info_derive-b9efbb2c659a45ec.d: /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/lib.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/attr.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/trait_bounds.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/utils.rs
+
+/home/miracle-alajemba/Documents/BuildersDAO/contracts/ink/target/debug/deps/libscale_info_derive-b9efbb2c659a45ec.so: /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/lib.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/attr.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/trait_bounds.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/utils.rs
+
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/lib.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/attr.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/trait_bounds.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/scale-info-derive-2.11.6/src/utils.rs:

@@ -1,0 +1,8 @@
+/home/miracle-alajemba/Documents/BuildersDAO/contracts/ink/target/debug/deps/derive_syn_parse-7d385b61b74caa97.d: /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/lib.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/error_macros.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/fields.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/variants.rs
+
+/home/miracle-alajemba/Documents/BuildersDAO/contracts/ink/target/debug/deps/libderive_syn_parse-7d385b61b74caa97.so: /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/lib.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/error_macros.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/fields.rs /home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/variants.rs
+
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/lib.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/error_macros.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/fields.rs:
+/home/miracle-alajemba/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/derive-syn-parse-0.2.0/src/variants.rs:

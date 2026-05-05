@@ -1,0 +1,1 @@
+ink::ink_env::call::CallBuilder<DefaultEnvironment, Set<Call<DefaultEnvironment>>, Set<ExecutionInput<ArgumentList<Argument<u128>, ArgumentList<Argument<ink::ink_primitives::AccountId>, ArgumentList<Argument<String>, ArgumentList<ArgumentListEnd, ArgumentListEnd>>>>>>, Set<ReturnType<Result<u32, builders_dao::Error>>>>

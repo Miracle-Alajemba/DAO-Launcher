@@ -1,0 +1,1 @@
+ink::ink_env::call::CallBuilder<DefaultEnvironment, Set<Call<DefaultEnvironment>>, Set<ExecutionInput<ArgumentList<ArgumentListEnd, ArgumentListEnd>>>, Set<ReturnType<Vec<ProposalView>>>>
