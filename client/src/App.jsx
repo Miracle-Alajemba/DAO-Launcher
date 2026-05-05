@@ -1,6 +1,7 @@
+import React from "react";
 import { useState } from "react";
 
-const API = "http://localhost:4010/api";
+const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:4010/api";
 
 export default function App() {
   const [dao, setDao] = useState(null);
@@ -19,6 +20,10 @@ export default function App() {
       }),
     });
     const data = await response.json();
+    if (data.error) {
+      setMessage(data.error);
+      return;
+    }
     setDao(data.dao);
     setMessage("DAO created: BuildersDAO (1000 governance tokens, 3 members).");
   }
@@ -27,9 +32,18 @@ export default function App() {
     const response = await fetch(`${API}/proposals`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "Fund dev team with 500 POT", amount: 500 }),
+      body: JSON.stringify({
+        title: "Fund dev team with 500 POT",
+        recipient: "DevTeamWallet",
+        amount: 500,
+        proposer: "Alice",
+      }),
     });
     const data = await response.json();
+    if (data.error) {
+      setMessage(data.error);
+      return;
+    }
     setProposal(data.proposal);
     setMessage("Proposal submitted.");
   }
@@ -42,6 +56,10 @@ export default function App() {
       body: JSON.stringify({ member, approve: true }),
     });
     const data = await response.json();
+    if (data.error) {
+      setMessage(data.error);
+      return;
+    }
     setProposal(data.proposal);
     setMessage(`${member} voted YES.`);
   }
@@ -91,6 +109,12 @@ export default function App() {
         <button onClick={executeProposal} disabled={!proposal}>3. Execute Treasury Payment</button>
         <button onClick={loadChainState}>4. Check Chain State</button>
       </section>
+
+      {proposal ? (
+        <p>
+          Proposal status: <strong>{proposal.status}</strong>
+        </p>
+      ) : null}
 
       <pre style={{ background: "#f6f6f6", padding: 16, borderRadius: 8, overflow: "auto" }}>
 {JSON.stringify({ dao, proposal, chainState }, null, 2)}
