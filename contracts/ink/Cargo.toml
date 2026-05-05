@@ -1,0 +1,23 @@
+[package]
+name = "builders_dao"
+version = "0.1.0"
+authors = ["BuildersDAO Team"]
+edition = "2021"
+
+[dependencies]
+ink = { version = "5.1.1", default-features = false }
+parity-scale-codec = { version = "3", default-features = false, features = ["derive"] }
+scale-info = { version = "2.11", default-features = false, features = ["derive"], optional = true }
+
+[lib]
+name = "builders_dao"
+path = "lib.rs"
+
+[features]
+default = ["std"]
+std = [
+  "ink/std",
+  "parity-scale-codec/std",
+  "scale-info/std",
+]
+ink-as-dependency = []
