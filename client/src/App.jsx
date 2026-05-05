@@ -143,33 +143,23 @@ export default function App() {
   }
 
   return (
-    <main
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        padding: 24,
-        maxWidth: 900,
-        margin: "0 auto",
-        minHeight: "100vh",
-        background: "#ffffff",
-        color: "#111111",
-      }}
-    >
-      <h1>BuildersDAO Launcher</h1>
-      <p>{message || "Create DAO, submit proposal, vote, execute, and verify state."}</p>
+    <main className="app">
+      <section className="hero">
+        <h1>BuildersDAO Launcher</h1>
+        <p>{message || "Create DAO, submit proposal, vote, execute, and verify state."}</p>
+      </section>
 
       {error ? (
-        <p style={{ background: "#fef2f2", color: "#991b1b", padding: 10, borderRadius: 8 }}>{error}</p>
+        <p className="alert error">{error}</p>
       ) : null}
       {loading ? (
-        <p style={{ background: "#eff6ff", color: "#1d4ed8", padding: 10, borderRadius: 8 }}>
-          Processing transaction...
-        </p>
+        <p className="alert info">Processing transaction...</p>
       ) : null}
 
-      <section style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+      <section className="grid-2">
         <form
           onSubmit={createDao}
-          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 14, background: "#fff" }}
+          className="card"
         >
           <h3>1. DAO Creation</h3>
           <label>DAO Name</label>
@@ -208,7 +198,7 @@ export default function App() {
 
         <form
           onSubmit={submitProposal}
-          style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 14, background: "#fff" }}
+          className="card"
         >
           <h3>2. Proposal Creation</h3>
           <label>Proposer</label>
@@ -252,7 +242,7 @@ export default function App() {
         </form>
       </section>
 
-      <section style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 14, marginBottom: 18 }}>
+      <section className="card">
         <h3>Dashboard</h3>
         <p>
           <strong>DAO:</strong> {dao?.name || "-"} | <strong>Treasury:</strong> {dao?.treasuryBalance ?? "-"} POT |{" "}
@@ -267,7 +257,7 @@ export default function App() {
         </p>
       </section>
 
-      <section style={{ border: "1px solid #e2e8f0", borderRadius: 10, padding: 14, marginBottom: 18 }}>
+      <section className="card">
         <h3>3. Proposal List + Voting + Execution</h3>
         <div style={{ marginBottom: 10 }}>
           <label>Active voter:&nbsp;</label>
@@ -286,31 +276,33 @@ export default function App() {
             const yesPct = Math.min(100, Math.round(((item.yesVotes || 0) / 3) * 100));
             const voted = hasMemberVoted(item);
             const canExecute = item.status === "Passed";
+            const statusClass =
+              item.status === "Executed"
+                ? "executed"
+                : item.status === "Passed"
+                  ? "passed"
+                  : item.status === "Rejected"
+                    ? "rejected"
+                    : "active";
             return (
               <article
                 key={item.id}
-                style={{
-                  border: "1px solid #e2e8f0",
-                  borderRadius: 8,
-                  padding: 12,
-                  marginBottom: 10,
-                  background: "#fff",
-                }}
+                className="card proposal"
+                style={{ marginBottom: 10 }}
               >
                 <p style={{ margin: "0 0 4px" }}>
                   <strong>#{item.id}</strong> {item.title}
                 </p>
                 <p style={{ margin: "0 0 4px" }}>
-                  Recipient: {item.recipient} | Amount: {item.amount} POT | Status:{" "}
-                  <strong>{item.status}</strong>
+                  Recipient: {item.recipient} | Amount: {item.amount} POT | Status: <span className={`pill ${statusClass}`}>{item.status}</span>
                 </p>
                 <p style={{ margin: "0 0 8px" }}>
                   Votes: YES {item.yesVotes} / NO {item.noVotes}
                 </p>
-                <div style={{ background: "#e2e8f0", height: 8, borderRadius: 999, marginBottom: 10 }}>
-                  <div style={{ width: `${yesPct}%`, height: 8, borderRadius: 999, background: "#22c55e" }} />
+                <div className="progress">
+                  <div style={{ width: `${yesPct}%` }} />
                 </div>
-                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <div className="btn-row">
                   <button
                     type="button"
                     onClick={() => vote(item.id, true)}
@@ -356,17 +348,17 @@ export default function App() {
         )}
       </section>
 
-      <section style={{ marginBottom: 12 }}>
+      <section className="card">
         <h3 style={{ marginBottom: 8 }}>4. Event Timeline</h3>
-        <div style={{ background: "#f8fafc", borderRadius: 8, padding: 12 }}>
+        <div className="events">
           {events.length === 0 ? (
-            <p style={{ margin: 0, color: "#64748b" }}>No events yet. Run actions to populate logs.</p>
+            <p className="muted" style={{ margin: 0 }}>No events yet. Run actions to populate logs.</p>
           ) : (
             events
               .slice()
               .reverse()
               .map((event) => (
-                <div key={event.id} style={{ borderBottom: "1px solid #e2e8f0", padding: "8px 0", fontSize: 14 }}>
+                <div key={event.id} className="event-item">
                   <strong>{event.type}</strong> · {event.at}
                 </div>
               ))
