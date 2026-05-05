@@ -86,6 +86,16 @@ export default function App() {
     setMessage("Chain state loaded.");
   }
 
+  const events = chainState?.events || [];
+  const statusTone =
+    proposal?.status === "Executed"
+      ? "#0f766e"
+      : proposal?.status === "Passed"
+        ? "#1d4ed8"
+        : proposal?.status === "Rejected"
+          ? "#b91c1c"
+          : "#475569";
+
   return (
     <main
       style={{
@@ -111,10 +121,48 @@ export default function App() {
       </section>
 
       {proposal ? (
-        <p>
-          Proposal status: <strong>{proposal.status}</strong>
-        </p>
+        <section
+          style={{
+            border: `1px solid ${statusTone}`,
+            borderRadius: 10,
+            padding: 12,
+            marginBottom: 12,
+            background: "#fafafa",
+          }}
+        >
+          <p style={{ margin: 0 }}>
+            Proposal status: <strong style={{ color: statusTone }}>{proposal.status}</strong>
+          </p>
+          <p style={{ margin: "6px 0 0" }}>
+            {proposal.title} → {proposal.recipient} ({proposal.amount} POT)
+          </p>
+        </section>
       ) : null}
+
+      <section style={{ marginBottom: 12 }}>
+        <h3 style={{ marginBottom: 8 }}>Onchain Event Timeline (MVP Simulation)</h3>
+        <div style={{ background: "#f8fafc", borderRadius: 8, padding: 12 }}>
+          {events.length === 0 ? (
+            <p style={{ margin: 0, color: "#64748b" }}>No events yet. Run the flow to generate immutable history.</p>
+          ) : (
+            events
+              .slice()
+              .reverse()
+              .map((event) => (
+                <div
+                  key={event.id}
+                  style={{
+                    borderBottom: "1px solid #e2e8f0",
+                    padding: "8px 0",
+                    fontSize: 14,
+                  }}
+                >
+                  <strong>{event.type}</strong> · <span>{event.at}</span>
+                </div>
+              ))
+          )}
+        </div>
+      </section>
 
       <pre style={{ background: "#f6f6f6", padding: 16, borderRadius: 8, overflow: "auto" }}>
 {JSON.stringify({ dao, proposal, chainState }, null, 2)}
