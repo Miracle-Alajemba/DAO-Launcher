@@ -314,7 +314,7 @@ mod builders_dao {
         pub fn get_dao_state(&self) -> DAOState {
             DAOState {
                 name: self.name.clone(),
-                members_count: self.members.len() as u32,
+                members_count: u32::try_from(self.members.len()).unwrap_or(u32::MAX),
                 treasury_balance: self.treasury_balance,
                 total_supply: self.total_supply,
                 next_proposal_id: self.next_proposal_id,
@@ -364,7 +364,7 @@ mod builders_dao {
                 yes_votes: proposal.yes_votes,
                 no_votes: proposal.no_votes,
                 status: proposal.status.clone(),
-                voters_count: proposal.voters.len() as u32,
+                voters_count: u32::try_from(proposal.voters.len()).unwrap_or(u32::MAX),
             }
         }
 
